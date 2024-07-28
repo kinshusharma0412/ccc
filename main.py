@@ -1,5 +1,5 @@
 import requests
-import selenium as st
+import streamlit as st
 from bs4 import BeautifulSoup
 List="""147.75.34.92:9400
 8.223.31.16:80
