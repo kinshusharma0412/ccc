@@ -1,4 +1,5 @@
 import requests
+import selenium as st
 from bs4 import BeautifulSoup
 List="""147.75.34.92:9400
 8.223.31.16:80
@@ -47,6 +48,6 @@ for x in List.split("\n"):
 		}
 		
 		response = session.get(url, params=params, headers=headers)#,proxies=proxies)
-		print(response.text)
+		st.write(response.text)
 	except:
 		print(1234)
