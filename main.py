@@ -1,4 +1,6 @@
 import asyncio
+import os
+os.system("playwright install")
 from playwright.async_api import async_playwright, Playwright
 from PIL import Image
 import streamlit as st
