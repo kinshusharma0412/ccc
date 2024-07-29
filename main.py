@@ -26,9 +26,9 @@ async def run(playwright: Playwright):
     # other actions...
     await browser.close()
 
-while True:
+if True:
 	async def main():
 		async with async_playwright() as playwright:
 			await run(playwright)
 	asyncio.run(main())
-	time.sleep(5*60)
+	
