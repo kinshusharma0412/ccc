@@ -1,5 +1,6 @@
 import asyncio
 import os
+Name="SoojhBoojhStream"
 os.system("playwright install")
 from playwright.async_api import async_playwright, Playwright
 from PIL import Image
