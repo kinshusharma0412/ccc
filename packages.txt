@@ -17,3 +17,7 @@ libgdk-pixbuf-2.0-0
 libasound2
 libxrender1
 libdbus-glib-1-2
+libnss3\
+libnspr4\
+libdrm2\
+libgbm1
