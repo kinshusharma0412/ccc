@@ -1,4 +1,4 @@
-cookie="PHPSESSID=6ekq4mknom4ujbahvue8gesi71; _ga=GA1.1.2060920914.1722336736; _gcl_au=1.1.1075564183.1722336736; gads=ID=6ca1aecaff404d79:T=1722336737:RT=1722336737:S=ALNI_MarSVJXallZMzlVAK06BlO_9QUUUA; gpi=UID=00000eadb08eafe1:T=1722336737:RT=1722336737:S=ALNI_MYYM3ouwpZXIm6EDm9jrdwM0IT8SA; __eoi=ID=b851902a6012a24e:T=1722336737:RT=1722336737:S=AA-AfjbNZDFhEQil43WgRxqTJOjR; _ga_HPSLFXFRWN=GS1.1.1722336736.1.0.1722336739.57.0.0; FCNEC=%5B%5B%22AKsRol9i1KZ4uf8aW36f-YHiie6jQklxnDRZWXHCOjb_VhuYYYpEcHYqsNFrJtZIsRE5qeDDDlNNpAPVBvxExHFwriFqEYrWf5Dpouswk1ZA-GvTwefdwEPAFg5vTR8469wxq2bDjKS1VqVTZqsKUD7Gm0BO6DaPKA%3D%3D%22%5D%5D"
+cookie="PHPSESSID=d51qrhktbsjv03pvq0rjd6qnp0; _ga=GA1.1.1999251347.1722215217; _gcl_au=1.1.405665147.1722215217; gads=ID=eeb586f2b6f2edcb:T=1722215218:RT=1722215218:S=ALNI_MZEMwvj4uDDC7pqMOCmWPXuQILY8w; gpi=UID=00000eab42b04f09:T=1722215218:RT=1722215218:S=ALNI_MZTGVM-gjTfQ4xvbnRtnL-yoOJP1Q; __eoi=ID=1dd675a1cde46eba:T=1722215218:RT=1722215218:S=AA-Afjb0ludLViAV9KvkStr4FUDg; FCNEC=%5B%5B%22AKsRol_Tvy38kCGIk2z02InKS7PAcsh0b7MHyCiliALrB9Y0n_4mfZs49_ExLHNxNozAl-asQ6UveeQCFOmGxCJi6xm-pKsYJlpCMOHF7vAhKuLW9NT4-i73DWrBVIxHTL_HLkBD4tp-sVrahVFAmuxNWoN0hwaGCQ%3D%3D%22%5D%5D; _ga_HPSLFXFRWN=GS1.1.1722215217.1.0.1722215267.10.0.0"
 import requests,time
 import streamlit as st
 from bs4 import BeautifulSoup
@@ -24,10 +24,12 @@ def my():
 	        try:
 	            s=soup.select("h4.v_info")[0].text
 	            st.write(s)
+	            print(s)
 	        except:
 	            pass
 	        s=soup.select("meta#token_key")[0]['value']
 	        st.write(s)
+	        print(s)
 	        open("db.txt","w").write(s)
 	    except:
 	        try:
@@ -52,17 +54,18 @@ def my():
 	            #  'Sec-Fetch-Mode': "cors",
 	            #  'Sec-Fetch-Site': "same-origin",
 	              'X-Requested-With': "XMLHttpRequest",
-	            #  'sec-ch-ua': "\"Not-A.Brand\";v=\"99\", \"Chromium\";v=\"124\"",
-	            #  'sec-ch-ua-full-version-list': "\"Not-A.Brand\";v=\"99.0.0.0\", \"Chromium\";v=\"124.0.6327.4\"",
+	            #  'sec-ch-ua': ""Not-A.Brand";v="99", "Chromium";v="124"",
+	            #  'sec-ch-ua-full-version-list': ""Not-A.Brand";v="99.0.0.0", "Chromium";v="124.0.6327.4"",
 	            #  'sec-ch-ua-mobile': "?1",
-	            #  'sec-ch-ua-model': "\"M2102J20SI\"",
-	            #  'sec-ch-ua-platform': "\"Android\"",
-	            #  'sec-ch-ua-platform-version': "\"12.0.0\"",
+	            #  'sec-ch-ua-model': ""M2102J20SI"",
+	            #  'sec-ch-ua-platform': ""Android"",
+	            #  'sec-ch-ua-platform-version': ""12.0.0"",
 	              'Cookie': cookie
 	            }
 	
 	    response = requests.get(url, params=params, headers=headers)
 	
 	    st.write(response.text)
+	    print(response.text)
 	    time.sleep(5*60)
 my()
