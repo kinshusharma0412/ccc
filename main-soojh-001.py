@@ -2,7 +2,7 @@ cookie="PHPSESSID=q9h1e1es54c6ch5f5bcojtq0g5; _ga=GA1.1.1668349273.1722088675; _
 import requests,time
 import streamlit as st
 from bs4 import BeautifulSoup
-@st.cache
+@st.cache_data
 def my():
 	while True:
 	    try:
