@@ -1,6 +1,6 @@
 cookie="PHPSESSID=73e3hjbaicupf9skbkitkogt4g;"
 import requests,time
-from streamlit import st
+import streamlit as st
 #File Number 58
 from bs4 import BeautifulSoup
 #@st.cache_data
