@@ -1,10 +1,11 @@
-cookie="PHPSESSID=8eof4t6vqjg62jv66ho8lvgobl; _ga=GA1.1.697137421.1722342464; _gcl_au=1.1.1366947662.1722342464; gads=ID=e405942a8a83de66:T=1722342466:RT=1722353544:S=ALNI_MaUpsH9NDHvPqsIBeE4qEou7VMiwA; gpi=UID=00000eadbd6fcd3f:T=1722342466:RT=1722353544:S=ALNI_Mapvv3-3SupIz_TyE3TnpWz_FKaPA; __eoi=ID=14b308f6f4be1a88:T=1722342466:RT=1722353544:S=AA-AfjbnoqlEZywzPIRbpuqGBzDF; FCNEC=%5B%5B%22AKsRol8d0ChcqgitOkszlGSqkgP5dYe-bYBoOvkx_WnB9V2mkN2ryTo9LC5AWxigUi9U60B4cVFa4btPvT1nn6a2hmBfrmwQuYXpUj2CQVnKVgEUJp6oXFq4ouOBUhshnc9cTQdR8il8AH-SMtPBCHZveXK4uiWfdA%3D%3D%22%5D%5D; _ga_HPSLFXFRWN=GS1.1.1722353542.2.1.1722353662.46.0.0"
+cookie="PHPSESSID=afc9hp1h0phr53dn13kcmdgrem;"
 import requests,time
-import streamlit as st
+from streamlit import st
+#File Number 55
 from bs4 import BeautifulSoup
 #@st.cache_data
 def my():
-	while True:
+	if True:
 	    try:
 	        url = "https://mycutebaby.in/contest/participant/669bc381bf80d"
 	
@@ -44,7 +45,7 @@ def my():
 	              'n': "669bc381bf80d",
 	              'captcha': "asdsdad",
 	              'key': s,
-	              'v': "Sharma ab"
+	              'v': "Sharma tryinging"
 	            }
 	    headers = {
 	              'User-Agent': "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Mobile Safari/537.36",
@@ -67,5 +68,5 @@ def my():
 	
 	    st.write(response.text)
 	    print(response.text)
-	    time.sleep(5*60)
+	   # time.sleep(5*60+1)
 my()
