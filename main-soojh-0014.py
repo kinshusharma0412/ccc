@@ -2,7 +2,7 @@ cookie="PHPSESSID=2b0965i4gdbr95nue6s2hspquh; _ga=GA1.1.1643404590.1722223183; _
 import requests,time
 import streamlit as st
 from bs4 import BeautifulSoup
-@st.cache_data
+#@st.cache_data
 def my():
 	while True:
 	    try:
@@ -23,12 +23,12 @@ def my():
 	        soup=BeautifulSoup(response.text,"html.parser")
 	        try:
 	            s=soup.select("h4.v_info")[0].text
-	            #st.write(s)
+	            st.write(s)
 	            print(s)
 	        except:
 	            pass
 	        s=soup.select("meta#token_key")[0]['value']
-	        #st.write(s)
+	        st.write(s)
 	        print(s)
 	        open("db.txt","w").write(s)
 	    except:
@@ -36,7 +36,7 @@ def my():
 	            s="9UyjIsVR"#open("db.txt","r").read(
 	        except:
 	            s=""
-	        ##st.write(s)
+	        st.write(s)
 	    url = "https://mycutebaby.in/contest/daily_vote/"
 	
 	
@@ -65,7 +65,7 @@ def my():
 	
 	    response = requests.get(url, params=params, headers=headers)
 	
-	    #st.write(response.text)
+	    st.write(response.text)
 	    print(response.text)
 	    time.sleep(5*60)
 my()
