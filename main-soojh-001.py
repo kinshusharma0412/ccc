@@ -108,6 +108,7 @@ import streamlit as st
 #dns.resolver.default_resolver=dns.resolver.Resolver(configure=False)
 #dns.resolver.default_resolver.nameservers=['8.8.8.8'] # this is a google public dns server,  use whatever dns server you like here
 # as a test, dns.resolver.query('www.google.com') should return an answer, not an exception'''
+import os
 from pymongo import MongoClient
 clientmongo=MongoClient('mongodb+srv://'+os.environ['mongo']+'@cluster0.ckcyx.mongodb.net/test?retryWrites=true&w=majority')
 #list_sub=clientmongo["my"]["cute"].insert_one({"baby":0})
