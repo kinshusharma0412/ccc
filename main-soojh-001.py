@@ -103,13 +103,13 @@ PHPSESSID=crhf5kifd5hpo21i79gofqetgi;"""
 
 #!pip install pymongo
 import dns
-
+import streamlit as st
 #import dns.resolver
 #dns.resolver.default_resolver=dns.resolver.Resolver(configure=False)
 #dns.resolver.default_resolver.nameservers=['8.8.8.8'] # this is a google public dns server,  use whatever dns server you like here
 # as a test, dns.resolver.query('www.google.com') should return an answer, not an exception'''
 from pymongo import MongoClient
-clientmongo=MongoClient('mongodb+srv://Kinshu04101:Qwert123@cluster0.ckcyx.mongodb.net/test?retryWrites=true&w=majority')
+clientmongo=MongoClient('mongodb+srv://'+os.environ['mongo']+'@cluster0.ckcyx.mongodb.net/test?retryWrites=true&w=majority')
 #list_sub=clientmongo["my"]["cute"].insert_one({"baby":0})
 x=clientmongo["my"]["cute"].find_one({"baby":{"$type":"int"}})["baby"]
 
@@ -120,8 +120,7 @@ list_sub=clientmongo["my"]["cute"].find_one({"baby":{"$type":"int"}})["baby"]
 
 
 print(f"[{z+1}/{all}] Cookie Running Now...")
-#open("/content/drive/MyDrive/Colab Notebooks/dbint.txt","w").write(str(z+1))
-
+#open("/content/drive/MyDrive/Colab Notebooks/dbint.txt","w").write(str(z+1
 import requests,time
 from bs4 import BeautifulSoup
 def my():
@@ -144,12 +143,12 @@ def my():
          soup=BeautifulSoup(response.text,"html.parser")
          try:
              s=soup.select("h4.v_info")[0].text
-             #st.write(s)
+             st.write(s)
              print(s)
          except:
              pass
          s=soup.select("meta#token_key")[0]['value']
-         #st.write(s)
+         st.write(s)
          print(s)
          open("db.txt","w").write(s)
      except:
@@ -157,7 +156,7 @@ def my():
              s="9UyjIsVR"#open("db.txt","r").read(
          except:
              s=""
-         #st.write(s)
+         st.write(s)
      url = "https://mycutebaby.in/contest/daily_vote/"
 
 
@@ -186,8 +185,20 @@ def my():
 
      response = requests.get(url, params=params, headers=headers)
 
-     #st.write(response.text)
+     st.write(response.text)
      print(response.text)
 
 my()
+time.sleep(5)
 
+url = "https://share.streamlit.io/api/v2/apps/ac3fcc3e-0017-42fb-98fc-21917c00fdaf/restart"
+
+headers = {
+  'User-Agent': "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36",
+  'x-csrf-token': "aDltV24yc1lJUnJlbDV6SmRmYm9tQmNxSE1YSXJmUkiMsOVVSoOvB5fIy+v4pQI3sV+ISlyOG8MV/OSAb6jC7w==",
+  'Cookie': "streamlit_session=MTcyMTIyMDQ5Mnx0Z3JnX3drLW95SFY2djRYUklfNzNrODN3ZFlKcDBlY1JhMVljQVlvUHdDNnc5TkhVYVpOWjhFY2pWTXhlNEZmMnBSdVFwS0M1SzRMc0szS1VWRW1YSmw5U1g2TzVZTzZya0puN1Z0RFh3MF8yZDdEQjF4cW5uNWMtU25rTHFGNW1CY2xDZUd3bFNlWEdwNVZLa2F4NlRRWDBtN1VGc2ZKNXFiTVdleEZoMzFOeFE3alJqX01uWVRDZlE9PXyzOJ4ofMbzdbXHjbaQM3ENLaNVErUtffc9cq5MkXxKOA==; _streamlit_csrf=MTcyMjUxMzk1OXxJalZKYlVsQmFWTjRNMFkzWlcxeWJVOXNTa0kwWm1SVk5UWnBWWGg2U0dsNVdHSkhPSGxTTTA5clMyTTlJZ289fCz-6HS_IE47GS0QusHxMG7Dv9SgZ5K2CXRhnQBCX8fE"
+}
+
+response = requests.post(url, headers=headers)
+
+st.write(response.text)
