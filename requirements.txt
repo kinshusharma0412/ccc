@@ -1,3 +1,4 @@
 requests
 bs4
-pillow
+pymongo
+git+https://github.com/rthalley/dnspython
