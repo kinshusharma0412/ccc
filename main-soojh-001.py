@@ -11,4 +11,4 @@ st.write(f"IP Address: {ip_address}")
 import os,sys
 import time 
 time.sleep(5)
-os.execv(sys.executable, ['python'] + sys.argv)
+os.system("kill 1")
