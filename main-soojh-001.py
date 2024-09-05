@@ -49,6 +49,7 @@ def check_ip_last_run(ip_address, time_diffrence=30*60+1):
 a,m=check_ip_last_run(ip_address)
 if a:
     st.secrets.ip=ip_address
+    st.write(str(st.secrets))
     clientmongo["my"]["cute"].find_one_and_update({"ip_address":{"$type":"object"}},{"$set": {"ip_address":ip_address_list}})
     LIST=clientmongo["my"]["cute"].find_one({"list":{"$type":"array"}})["list"]
 
