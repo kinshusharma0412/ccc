@@ -9,6 +9,8 @@ model="RMX3939"
 
 
 
+import streamlit as st
+from streamlit_server_state import server_state, server_state_lock
 
 import dns.resolver,re,os
 dns.resolver.default_resolver=dns.resolver.Resolver(configure=False)
@@ -26,6 +28,7 @@ if 0:
 ip_address_list=clientmongo["my"]["cute"].find_one({"ip_address":{"$type":"object"}})["ip_address"]
 hostname = socket.gethostname()
 ip_address  = requests.get("http://wtfismyip.com/text").text
+
 #ip_address = !curl ipecho.net/plain
 #ip_address=ip_address[0]
 def check_ip_last_run(ip_address, time_diffrence=30*60+1):
@@ -47,6 +50,8 @@ def check_ip_last_run(ip_address, time_diffrence=30*60+1):
 
 a,m=check_ip_last_run(ip_address)
 if a:
+    st.secrets["ip"]=ip_address
+    clientmongo["my"]["cute"].find_one_and_update({"ip_address":{"$type":"object"}},{"$set": {"ip_address":ip_address_list}})
     LIST=clientmongo["my"]["cute"].find_one({"list":{"$type":"array"}})["list"]
 
     cookie=clientmongo["my"]["cute"].find_one({"cookie":{"$type":"string"}})["cookie"]
@@ -78,6 +83,18 @@ if a:
   "Accept-Language": "en-IN,en-GB;q=0.9,en-US;q=0.8,en;q=0.7",
                    'Cookie': cookie.split("\n")[LIST[z]]
                  }
+else:
+	if "ip" not in st.secrets:
+		r2=requests.session()
+		r2.headers.update({
+  'User-Agent': "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Mobile Safari/537.36",
+  'Content-Type': "application/json",
+  'x-csrf-token': "MjdIQjFXNmxDdEFSbURETnlSN0dBa2xoMnQ4VFRVM0a13OffJehPo4PYwtHWhlAxs15E5hNYe7zIfeEjt+EAxA==",
+  'Cookie': os.getenv("cookie")
+})
+		url = "https://main-soojh-00{x+1}0.streamlit.app/api/v2/app"
+		response = r.delete(url)
+		
 def auto():
     global mess,funs, list_sub
     mess=""
@@ -186,7 +203,7 @@ def auto():
     else:
         if a:
             pass#ip_address_list.pop(ip_address)
-        #clientmongo["my"]["cute"].find_one_and_update({"ip_address":{"$type":"object"}},{"$set": {"ip_address":ip_address_list}})
+        #
 
 while True:
     auto()
