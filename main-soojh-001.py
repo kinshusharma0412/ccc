@@ -57,6 +57,7 @@ r2.headers.update({
 if a:
     if "ip" not in st.secrets:
     	secr=r2.get("https://main-soojh-0010.streamlit.app/api/v2/app/secrets").json()["secrets"]+'\nip='+ip_address
+    	st.write(secr)
     	ress=r2.post("https://main-soojh-0010.streamlit.app/api/v2/app/secrets",data={"secrets":secr})
     	st.write(ress.status_code)
     	
