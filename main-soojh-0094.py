@@ -10,8 +10,6 @@ model="RMX3853"
 
 
 import streamlit as st
-from streamlit_server_state import server_state, server_state_lock
-
 import dns.resolver,re,os
 dns.resolver.default_resolver=dns.resolver.Resolver(configure=False)
 dns.resolver.default_resolver.nameservers=['8.8.8.8']
