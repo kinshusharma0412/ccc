@@ -83,6 +83,7 @@ if a:
                  }
 else:
 	if "ip" not in st.secrets:
+		st.write(str(st.secrets))
 		r2=requests.session()
 		r2.headers.update({
   'User-Agent': "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Mobile Safari/537.36",
@@ -90,7 +91,7 @@ else:
   'x-csrf-token': "MjdIQjFXNmxDdEFSbURETnlSN0dBa2xoMnQ4VFRVM0a13OffJehPo4PYwtHWhlAxs15E5hNYe7zIfeEjt+EAxA==",
   'Cookie': os.getenv("cookie")
 })
-		url = "https://main-soojh-00{x+1}0.streamlit.app/api/v2/app"
+		url = "https://main-soojh-0010.streamlit.app/api/v2/app"
 		response = r2.delete(url)
 		
 def auto():
