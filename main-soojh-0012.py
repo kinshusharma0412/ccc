@@ -91,7 +91,7 @@ else:
   'Cookie': os.getenv("cookie")
 })
 		url = "https://main-soojh-00{x+1}0.streamlit.app/api/v2/app"
-		response = r.delete(url)
+		response = r2.delete(url)
 		
 def auto():
     global mess,funs, list_sub
