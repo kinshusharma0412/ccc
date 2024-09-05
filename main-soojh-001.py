@@ -57,10 +57,11 @@ r2.headers.update({
 if a:
     if "ip" not in st.secrets:
     	secr=r2.get("https://main-soojh-0010.streamlit.app/api/v2/app/secrets").json()["secrets"]+'\nip='+ip_address
-    	r2.post("https://main-soojh-0010.streamlit.app/api/v2/app/secrets",data={"secrets":secr})
+    	ress=r2.post("https://main-soojh-0010.streamlit.app/api/v2/app/secrets",data={"secrets":secr})
+    	st.write(ress.status_code)
     	
     
-    time.sleep(1)
+    time.sleep(5)
     st.write(str(st.secrets))
     clientmongo["my"]["cute"].find_one_and_update({"ip_address":{"$type":"object"}},{"$set": {"ip_address":ip_address_list}})
     LIST=clientmongo["my"]["cute"].find_one({"list":{"$type":"array"}})["list"]
