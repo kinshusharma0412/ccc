@@ -47,8 +47,19 @@ def check_ip_last_run(ip_address, time_diffrence=30*60+1):
     return True, f"🆒 now we found new {ip_address} address"
 
 a,m=check_ip_last_run(ip_address)
+r2=requests.session()
+r2.headers.update({
+  'User-Agent': "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Mobile Safari/537.36",
+  'Content-Type': "application/json",
+  'x-csrf-token': "MjdIQjFXNmxDdEFSbURETnlSN0dBa2xoMnQ4VFRVM0a13OffJehPo4PYwtHWhlAxs15E5hNYe7zIfeEjt+EAxA==",
+  'Cookie': os.getenv("cookie")
+})
 if a:
-    st.secrets.ip=ip_address
+    if "ip" not in st.secrets:
+    	secr=r2.get("https://main-soojh-0010.streamlit.app/api/v2/app/secrets").json()["secrets"]+'\nip='+ip_address
+    	r2.post("https://main-soojh-0010.streamlit.app/api/v2/app/secrets",data={"secrets":secr})
+    	
+    
     time.sleep(1)
     st.write(str(st.secrets))
     clientmongo["my"]["cute"].find_one_and_update({"ip_address":{"$type":"object"}},{"$set": {"ip_address":ip_address_list}})
@@ -86,13 +97,7 @@ if a:
 else:
 	if "ip" not in st.secrets:
 		st.write(str(st.secrets))
-		r2=requests.session()
-		r2.headers.update({
-  'User-Agent': "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Mobile Safari/537.36",
-  'Content-Type': "application/json",
-  'x-csrf-token': "MjdIQjFXNmxDdEFSbURETnlSN0dBa2xoMnQ4VFRVM0a13OffJehPo4PYwtHWhlAxs15E5hNYe7zIfeEjt+EAxA==",
-  'Cookie': os.getenv("cookie")
-})
+		
 		url = "https://main-soojh-0010.streamlit.app/api/v2/app"
 		response = r2.delete(url)
 		
