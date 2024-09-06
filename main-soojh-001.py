@@ -48,17 +48,17 @@ def check_ip_last_run(ip_address, time_diffrence=30*60+1):
 
 a,m=check_ip_last_run(ip_address)
 r2=requests.session()
-r2.headers.update({
+r2.headers.update( {
   'User-Agent': "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Mobile Safari/537.36",
   'Content-Type': "application/json",
-  'x-csrf-token': "MjdIQjFXNmxDdEFSbURETnlSN0dBa2xoMnQ4VFRVM0a13OffJehPo4PYwtHWhlAxs15E5hNYe7zIfeEjt+EAxA==",
+  'x-csrf-token': "WW9HVmMzemthOXhjMVkzZlRkeThWWmJRbUxQYWluRFdpJAgbKWlDA1dAKylbbUUcDicADxsgUCgufjc5GSIcYQ==",
   'Cookie': os.getenv("cookie")
 })
 if a:
     if "ip" not in st.secrets:
     	secr=r2.get("https://main-soojh-0010.streamlit.app/api/v2/app/secrets").json()["secrets"]
     	st.write(secr)
-    	ress=r2.post("https://main-soojh-0010.streamlit.app/api/v2/app/secrets",data={"secrets":secr+'\nip='+ip_address})
+    	ress=r2.post("https://main-soojh-0010.streamlit.app/api/v2/app/secrets",json={"secrets":secr+'\nip='+ip_address})
     	st.write(ress.status_code)
     	
     
