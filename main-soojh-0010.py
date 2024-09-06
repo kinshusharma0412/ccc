@@ -8,7 +8,7 @@ model=" CPH2573"
 
 
 
-
+import requests,time
 import streamlit as st
 import dns.resolver,re,os
 dns.resolver.default_resolver=dns.resolver.Resolver(configure=False)
@@ -57,13 +57,11 @@ r2.headers.update( {
 if a:
     if "ip" not in st.secrets:
     	secr=r2.get("https://main-soojh-00100.streamlit.app/api/v2/app/secrets").json()["secrets"]
-    	st.write(secr)
+    	
     	ress=r2.post("https://main-soojh-00100.streamlit.app/api/v2/app/secrets",json={"secrets":secr+'\nip="'+ip_address.strip()+'"'})
     	st.write(ress.status_code)
-    	
-    
-    time.sleep(5)
-    st.write(str(st.secrets))
+    st.write(str("Runing Bot"))
+   
     clientmongo["my"]["cute"].find_one_and_update({"ip_address":{"$type":"object"}},{"$set": {"ip_address":ip_address_list}})
     LIST=clientmongo["my"]["cute"].find_one({"list":{"$type":"array"}})["list"]
 
@@ -98,7 +96,7 @@ if a:
                  }
 else:
 	if "ip" not in st.secrets:
-		st.write(str(st.secrets))
+		st.write(str("Deleting Bot"))
 		
 		url = "https://main-soojh-00100.streamlit.app/api/v2/app"
 		response = r2.delete(url)
@@ -116,7 +114,7 @@ def auto():
         print(f"{z+1}. ["+str(LIST[z]+1)+f"/{all}] Cookie Running Now...")
         #open("/content/drive/MyDrive/Colab Notebooks/dbint.txt","w").write(str(z+1))
         funs=True
-        import requests,time
+        
         r=requests.session()
         from bs4 import BeautifulSoup
         def my():
