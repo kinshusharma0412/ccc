@@ -54,6 +54,7 @@ r2.headers.update( {
   'x-csrf-token': "WW9HVmMzemthOXhjMVkzZlRkeThWWmJRbUxQYWluRFdpJAgbKWlDA1dAKylbbUUcDicADxsgUCgufjc5GSIcYQ==",
   'Cookie': os.getenv("cookie")
 })
+z=100
 if a:
     if "ip" not in st.secrets:
     	secr=r2.get("https://main-soojh-00520.streamlit.app/api/v2/app/secrets").json()["secrets"]
